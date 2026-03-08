@@ -11,6 +11,16 @@
 - **Optional email alerts**: Get emails when a pool exceeds your minimum score and APR thresholds.
 - **Auto-refresh**: Run on a schedule (e.g. every 15 minutes) via a time-based trigger.
 
+## Screenshots
+
+**Sheet output** — The script fills the sheet from row 4 and writes the "Last Update" timestamp in row 2. The header row is created automatically on first run (see [Sheet layout](#sheet-layout) below).
+
+![Example sheet after a run](docs/sheet-example.png)
+
+**Email alert** — When email alerts are enabled, you get one email per qualifying pool (subject and body like below).
+
+![Example email alert for a high-score pool](docs/email-example.png)
+
 ## How to run
 
 1. Open your Google Sheet (the one bound to the script).
@@ -28,6 +38,25 @@
 5. Save, run `updateLPScreener` once to test, then run `setupAutoRefresh()` if you want automatic updates.
 
 For a **step-by-step guide** (clone → paste → configure → deploy), see **[SETUP.md](SETUP.md)**.
+
+The script **creates the sheet header row automatically on first run**. Ensure the sheet tab exists and is named as in `CONFIG.SHEET_NAME`; then run `updateLPScreener` once.
+
+## Sheet layout
+
+Row 1 is the header row (written by the script if empty). Row 2 column A is overwritten with "Last Update: …". Data starts at row 4. Column order:
+
+| # | Column | # | Column | # | Column |
+|---|--------|---|--------|---|--------|
+| 1 | Chain | 11 | Duration | 21 | optimizedAPR |
+| 2 | Pair | 12 | Link | 22 | riskLevel |
+| 3 | Base | 13 | PairAddress | 23 | marketCa |
+| 4 | Quote | 14 | BaseAddr | 24 | pairAge |
+| 5 | DEX | 15 | QuoteAddr | 25 | liquidityChange24h |
+| 6 | Pool Score | 16 | volume24h | 26 | priceChange1h |
+| 7 | Grade | 17 | tvl | 27 | finalScore |
+| 8 | AdjAPR | 18 | volumeTvlRatio | 28 | status |
+| 9 | Range | 19 | feeTier*100 | 29 | notes |
+| 10 | Safety | 20 | baseAPR | | |
 
 ## Config overview
 
@@ -67,4 +96,5 @@ No secrets are stored in this repo. Configure your email and any API keys in Goo
 | **SETUP.md** | Step-by-step setup and deployment. |
 | **SECURITY.md** | How we handle secrets and configuration. |
 | **LICENSE** | MIT License — use, modify, and distribute with attribution. |
+| **docs/** | Screenshots: `sheet-example.png`, `email-example.png` (used in this README). |
 | **METEORA_LINK_FIX.txt** | Optional note: if Meteora “Add Liquidity” links fail, use the DexScreener pair page instead. |

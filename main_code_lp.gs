@@ -54,6 +54,24 @@ const CONFIG = {
   DATA_START_ROW: 4
 };
 
+// Sheet column headers (row 1) - written automatically on first run
+var SHEET_HEADERS = [
+  'Chain', 'Pair', 'Base', 'Quote', 'DEX', 'Pool Score', 'Grade', 'AdjAPR', 'Range', 'Safety', 'Duration',
+  'Link', 'PairAddress', 'BaseAddr', 'QuoteAddr', 'volume24h', 'tvl', 'volumeTvlRatio', 'feeTier*100',
+  'baseAPR', 'optimizedAPR', 'riskLevel', 'marketCa', 'pairAge', 'liquidityChange24h', 'priceChange1h',
+  'finalScore', 'status', 'notes'
+];
+
+/**
+ * Ensure sheet has header row (row 1). Called before writing data; only writes if row 1 is empty.
+ */
+function ensureSheetHeaders(sheet) {
+  if (sheet.getRange(1, 1).getValue() === '') {
+    sheet.getRange(1, 1, 1, SHEET_HEADERS.length).setValues([SHEET_HEADERS]);
+    sheet.getRange(1, 1, 1, SHEET_HEADERS.length).setFontWeight('bold');
+  }
+}
+
 // ==================== MAIN FUNCTIONS ====================
 
 /**
@@ -687,6 +705,7 @@ function filterPairs(pairs) {
  * Update Google Sheet with filtered pairs
  */
 function updateSheet(sheet, pairs) {
+  ensureSheetHeaders(sheet);
   var lastRow = sheet.getLastRow();
   if (lastRow >= CONFIG.DATA_START_ROW) {
     var numRowsToClear = lastRow - CONFIG.DATA_START_ROW + 1;

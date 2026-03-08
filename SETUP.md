@@ -12,6 +12,8 @@ Follow these steps to run the LP Screener in your own Google Sheet.
 1. Go to [Google Sheets](https://sheets.google.com) and create a new spreadsheet.
 2. (Optional) Rename the first sheet tab to **LP Screener**. If you use another name, you’ll set it in CONFIG later as `SHEET_NAME`.
 
+The script **creates the header row automatically on first run**. You do not need to type column headers manually; just ensure the sheet tab exists and run `updateLPScreener` once.
+
 ## 3. Open Apps Script and paste the code
 
 1. In the spreadsheet, go to **Extensions → Apps Script**.
@@ -55,9 +57,9 @@ Save the script again after editing CONFIG.
 1. In the Apps Script editor, open the function dropdown at the top and select **updateLPScreener**.
 2. Click **Run**.
 3. The first time, Google will ask you to authorize the script (view/edit the spreadsheet, send email if alerts are on). Approve the prompts.
-4. When it finishes, switch back to your Google Sheet. You should see the **LP Screener** tab (or your `SHEET_NAME` tab) updated with pool data and a “Last Update” timestamp near the top.
+4. When it finishes, switch back to your Google Sheet. You should see the **LP Screener** tab (or your `SHEET_NAME` tab) with the header row in row 1 (if it was empty), the “Last Update” timestamp in row 2, and pool data starting at row 4.
 
-If you see “Sheet not found”, make sure the sheet tab name matches `CONFIG.SHEET_NAME`.
+If you see “Sheet not found”, make sure the sheet tab name matches `CONFIG.SHEET_NAME`. For the sheet layout (column order and meaning), see the [Sheet layout](README.md#sheet-layout) section in README.
 
 ## 6. (Optional) Set up automatic refresh
 
