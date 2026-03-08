@@ -1,0 +1,7 @@
+METEORA LINK IN getDexLink
+==========================
+If the Meteora "Add Liquidity" link does not open correctly, the script already uses
+a DexScreener fallback. See the comment in getDexLink (Solana / meteora block).
+
+Original issue: pairAddress from the API does not always open in app.meteora.ag.
+Fix: use the pair page on DexScreener and click Add Liquidity there.
