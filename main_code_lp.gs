@@ -710,7 +710,7 @@ function updateSheet(sheet, pairs) {
   if (lastRow >= CONFIG.DATA_START_ROW) {
     var numRowsToClear = lastRow - CONFIG.DATA_START_ROW + 1;
     // getRange(startRow, startCol, numRows, numCols)
-    sheet.getRange(CONFIG.DATA_START_ROW, 1, numRowsToClear, 29).clearContent();
+    sheet.getRange(CONFIG.DATA_START_ROW, 1, numRowsToClear, SHEET_HEADERS.length).clearContent();
   }
 
   if (pairs.length === 0) {
@@ -837,7 +837,7 @@ function updateSheet(sheet, pairs) {
   if (rows.length > 0) {
     var startRow = CONFIG.DATA_START_ROW;
     var numRows = rows.length;
-    var numCols = 29;
+    var numCols = SHEET_HEADERS.length;
     // getRange(startRow, startCol, numRows, numCols) - writes rows.length rows
     sheet.getRange(startRow, 1, numRows, numCols).setValues(rows);
     formatDataRange(sheet, startRow, numRows);
