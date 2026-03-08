@@ -44,6 +44,10 @@ All settings live in the **CONFIG** object at the top of **main_code_lp.gs**:
 
 The repository ships with **placeholder values** (e.g. `0`). You must set your own numbers and token lists; the best pools depend on your strategy.
 
+## License
+
+This project is licensed under the [MIT License](LICENSE). You may use, modify, and distribute it under the terms of that license.
+
 ## Security
 
 No secrets are stored in this repo. Configure your email and any API keys in Google Apps Script (script editor or **File → Project properties → Script properties**), not in committed code. See [SECURITY.md](SECURITY.md).
@@ -62,4 +66,5 @@ No secrets are stored in this repo. Configure your email and any API keys in Goo
 | **README.md** | This file — overview and how to run. |
 | **SETUP.md** | Step-by-step setup and deployment. |
 | **SECURITY.md** | How we handle secrets and configuration. |
+| **LICENSE** | MIT License — use, modify, and distribute with attribution. |
 | **METEORA_LINK_FIX.txt** | Optional note: if Meteora “Add Liquidity” links fail, use the DexScreener pair page instead. |
