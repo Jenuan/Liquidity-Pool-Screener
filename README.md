@@ -15,11 +15,76 @@
 
 **Sheet output** — The script fills the sheet from row 4 and writes the "Last Update" timestamp in row 2. The header row is created automatically on first run (see [Sheet layout](#sheet-layout) below).
 
-![Example sheet after a run](docs/sheet-example.png)
+Example header row (row 1):
+
+| Chain | Pair | Base | Quote | DEX | Pool Score | Grade | AdjAPR | Range | Safety |
+|-------|------|------|-------|-----|------------|-------|--------|-------|--------|
+| Duration | Link | PairAddress | BaseAddr | QuoteAddr | volume24h | tvl | volumeTvlRatio | feeTier*100 | baseAPR |
+| optimizedAPR | riskLevel | marketCa | pairAge | liquidityChange24h | priceChange1h | finalScore | status | notes | |
 
 **Email alert** — When email alerts are enabled, you get one email per qualifying pool (subject and body like below).
 
-![Example email alert for a high-score pool](docs/email-example.png)
+<img src="docs/email-example.png" alt="Example email alert for a high-score pool" width="480" style="border-radius: 12px;">
+
+Example email body:
+
+```
+🔥 HIGH-QUALITY OPPORTUNITY DETECTED! 🔥
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAIR: WAR/SOL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Chain: Solana
+DEX: pumpswap
+
+🏆 QUALITY GRADE: A/S
+📊 FINAL SCORE: 86.2/100
+
+📋 CONTRACT ADDRESSES:
+• Pair Contract: D8gczSF4uYxWt5FJEfdRUWNYdBW1LoNUYDJ8GspakwUJ
+• WAR Contract: DeVVwq85BuiRPhxiSxw97AogQ8ensFC1mr4NZ4GA5PGD
+• SOL Contract: So11111111111111111111111111111111111111112
+
+📊 APR BREAKDOWN:
+• Base APR (Full Range): 19331.5%
+• Optimized APR (Concentrated): 19331.5%
+• Adjusted APR (Risk-Adjusted): 19331.5% ⭐
+
+🎯 RANGE SETUP:
+• Recommended Range: Full Range
+• Safety Score: 0/100
+• Expected Duration: N/A
+• Risk Level: EXTREME
+
+💰 POOL METRICS:
+• 24h Volume: $15.153.279,7
+• TVL: $114.046,182
+• Volume/TVL Ratio: 132.87x
+• Market Cap: $71.595,742
+
+📈 ACTIVITY INDICATORS:
+💰 High volume
+🔥 Very recent volume
+🚀 Strong acceleration
+💎 Very active
+⚡ High efficiency
+
+⚠️ RISK FACTORS:
+• Price Change 1h: 6.6%
+• Liquidity Change 24h: 0.0%
+• Pair Age: 3.7 hours
+
+🔗 QUICK LINKS:
+DexScreener: https://dexscreener.com/solana/D8gczSF4uYxWt5FJEfdRUWNYdBW1LoNUYDJ8GspakwUJ
+
+📋 ADD LIQUIDITY:
+Solana Pool: D8gczSF4uYxWt5FJEfdRUWNYdBW1LoNUYDJ8GspakwUJ
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This is an automated alert from your LP Screener. Always DYOR!
+```
 
 ## How to run
 
@@ -96,5 +161,5 @@ No secrets are stored in this repo. Configure your email and any API keys in Goo
 | **SETUP.md** | Step-by-step setup and deployment. |
 | **SECURITY.md** | How we handle secrets and configuration. |
 | **LICENSE** | MIT License — use, modify, and distribute with attribution. |
-| **docs/** | Screenshots: `sheet-example.png`, `email-example.png` (used in this README). |
+| **docs/** | Screenshot: `email-example.png` (email alert example, used in this README). |
 | **METEORA_LINK_FIX.txt** | Optional note: if Meteora “Add Liquidity” links fail, use the DexScreener pair page instead. |
