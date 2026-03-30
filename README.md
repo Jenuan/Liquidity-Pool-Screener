@@ -163,3 +163,7 @@ No secrets are stored in this repo. Configure your email and any API keys in Goo
 | **LICENSE** | MIT License — use, modify, and distribute with attribution. |
 | **docs/** | Screenshot: `email-example.png` (email alert example, used in this README). |
 | **METEORA_LINK_FIX.txt** | Optional note: if Meteora “Add Liquidity” links fail, use the DexScreener pair page instead. |
+
+
+### Keywords
+Defi, cripto, liquidity, pools, pancakeswap, uniswap, meteora, memecoins, usdc, solana, bitcoin
