@@ -7,3 +7,12 @@
 - **Script properties**: Use `PropertiesService.getScriptProperties()` in Apps Script for sensitive values; they are stored in the script project, not in this repository.
 
 When contributing or cloning, ensure you never commit `.env` files, `secrets/` contents, or hardcoded credentials.
+
+## Python bot (`python/`)
+
+The optional Python companion uses environment variables and may reference a **Google service account JSON key file** on your machine.
+
+- **Never commit** `python/.env`, `.env.*`, RPC URLs with real API keys baked in, or any `*.json` key export from Google Cloud.
+- Copy `python/.env.example` to `python/.env` locally and set `GOOGLE_SERVICE_ACCOUNT_JSON` to an **absolute or relative path outside this repository** (for example a path under your user profile or a secrets manager).
+- Use dedicated RPC providers (Alchemy, Infura, QuickNode, Helius, etc.) with keys you rotate if exposed.
+- GitHub can scan pushes for known secret patterns; see [Secret scanning](https://docs.github.com/code-security/secret-scanning/about-secret-scanning).

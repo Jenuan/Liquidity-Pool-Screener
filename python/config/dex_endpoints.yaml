@@ -1,0 +1,46 @@
+dexes:
+  uniswap_v3:
+    base_url: "https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3"
+    fee_tiers_bps: [500, 3000, 10000]
+
+  uniswap_v2:
+    chain_id: 1
+    rpc_url_env: ETHEREUM_RPC_URL
+    factory_address: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f"
+    router_address: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D"
+
+  pancakeswap_v2:
+    chain_id: 56
+    rpc_url_env: BSC_RPC_URL
+    factory_address: "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73"
+    router_address: "0x10ED43C718714eb63d5aA57B78B54704E256024E"
+    init_code_hash: "0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5"
+
+  # Base V3: leitor on-chain não é V2; métricas ao vivo via DexScreener (live_metrics.py).
+  uniswap_v3_base:
+    chain_id: 8453
+    rpc_url_env: BASE_RPC_URL
+    live_metrics_mode: none
+  pancakeswap_v3_base:
+    chain_id: 8453
+    rpc_url_env: BASE_RPC_URL
+    live_metrics_mode: none
+
+  # Solana: set SOLANA_RPC_URL in .env (required for live metrics). CLMM pool pubkey (base58).
+  # Pool account must match Raydium CLMM PoolState layout; owner must be in clmm_program_ids.
+  pancakeswap_v3_solana:
+    network: solana
+    rpc_url_env: SOLANA_RPC_URL
+    clmm_program_ids:
+      - CAMMCzo5YL8w4VFF8KVHrK22GGUsp5VTaW7grrKgrWqK  # Raydium CLMM (add Pancake fork IDs if different)
+      # Allowlisted program owner seen in dashboard export:
+      - HpNfyc2Saw7RKkQd8nEL4khUcuPhQ7WwY1B2qjx8jxFq
+
+datasources:
+  screener:
+    source_type: "google_sheets"
+    sheet_id: "YOUR_SHEET_ID_HERE"
+    range: "LPs!A1:Z500"
+    # Apps Script MEME COIN LP screener: DATA_START_ROW=4 → linhas 2–3 não são pares.
+    skip_leading_rows_after_header: 2
+

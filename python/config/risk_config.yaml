@@ -1,0 +1,36 @@
+portfolio:
+  initial_capital_usd: 100.0
+  max_positions: 5
+  position_size_usd: 20.0
+
+risk_limits:
+  daily_portfolio_risk_pct: 5.0
+  daily_portfolio_target_pct: 5.0
+  position_max_risk_pct: 20.0
+
+apr_thresholds_fees_24h:
+  HIGH: 3.0
+  MEDIUM: 1.0
+  LOW: 0.5
+
+strategy:
+  default_risk_level: MEDIUM
+  rebalance_interval_minutes: 15
+  max_open_positions_per_asset: 1
+  min_hours_between_reentries: 12
+  min_hold_minutes: 15
+
+# --- Paper / validação E2E (dashboard, eventos, SQLite) ---
+# Ativar modo relaxado: `relaxed: true` abaixo OU `export LPBOT_PAPER_RELAXED=1` (sem mudar o YAML).
+# Desativar após o teste: `relaxed: false` e unset da env; mantêm-se os thresholds conservadores acima.
+# `max_open_positions_per_cycle` > 1 é só stress-test de UI/estado, não estratégia de produção.
+paper_trading:
+  # true = thresholds baixos + mais aberturas/ciclo (paper). Repor false após validar o dashboard.
+  relaxed: true
+  apr_thresholds_fees_24h:
+    HIGH: 0.15
+    MEDIUM: 0.08
+    LOW: 0.05
+  min_hold_minutes: 2
+  max_screener_candidates_per_cycle: 20
+  max_open_positions_per_cycle: 3

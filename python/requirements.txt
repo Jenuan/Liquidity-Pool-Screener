@@ -1,0 +1,12 @@
+requests
+base58
+pandas
+numpy
+scipy
+python-dotenv
+PyYAML
+gspread
+google-api-python-client
+web3>=6.0.0
+web3-ethereum-defi
+streamlit>=1.33.0

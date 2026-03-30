@@ -1,6 +1,8 @@
 # Environment and secrets
 .env
 .env.*
+!.env.example
+!**/.env.example
 *.env
 secrets/
 
@@ -14,3 +16,28 @@ Thumbs.db
 
 # Local overrides (if you use a local config file)
 config.local.*
+
+# Python (companion bot in python/)
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.pytype/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Local data exports / state (if created under python/)
+python/data/
+
+# Never commit Google service account JSON or similar
+**/service_account*.json
+google-*-credentials.json
+*-sa-key.json

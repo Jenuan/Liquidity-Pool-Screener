@@ -2,6 +2,12 @@
 
 **LP Screener** is a Google Apps Script that automatically finds and scores liquidity pools (LPs) across multiple chains. It pulls data from DexScreener and GeckoTerminal, applies your own safety filters and scoring, and updates a Google Sheet. Optional email alerts notify you when high-score, high-APR opportunities appear.
 
+## Python companion bot (`python/`)
+
+This repo also includes an optional **Python** stack: it reads the same Google Sheet, applies LP / risk logic, and can run a **Streamlit dashboard** with live-style metrics (RPCs, DexScreener, on-chain reads where supported). Setup, env vars, and metric limitations are documented in **[python/README.md](python/README.md)**.
+
+**Typical flow:** Apps Script fills the sheet → configure a Google **service account** + Sheet ID in `python/.env` (never commit that file or JSON keys) → run scripts from the `python/` directory. See **[SECURITY.md](SECURITY.md)** for what must stay local.
+
 ## Features
 
 - **Multi-chain**: Screen pools on Solana, Base, and other supported chains (configurable).
@@ -150,7 +156,15 @@ No secrets are stored in this repo. Configure your email and any API keys in Goo
 
 - More chains and DEXs.
 - Optional Telegram bot or notifications.
-- Optional standalone script/config for power users.
+- Richer strategy tooling (the Python bot in `python/` is a starting point for automation and monitoring).
+
+## Contributing & help wanted
+
+We welcome issues and pull requests, especially:
+
+- **Strategy & risk:** Scoring, filters, and position sizing ideas grounded in real LP experience (this is not financial advice; always DYOR).
+- **Accessibility:** Clearer docs for non-developers, fewer manual steps, and plain-language explanations.
+- **Internationalization:** Portuguese/English improvements across READMEs and UI copy.
 
 ## Files in this repo
 
@@ -163,6 +177,7 @@ No secrets are stored in this repo. Configure your email and any API keys in Goo
 | **LICENSE** | MIT License — use, modify, and distribute with attribution. |
 | **docs/** | Screenshot: `email-example.png` (email alert example, used in this README). |
 | **METEORA_LINK_FIX.txt** | Optional note: if Meteora “Add Liquidity” links fail, use the DexScreener pair page instead. |
+| **python/** | Optional Python bot: sheet integration, risk/executor logic, Streamlit dashboard. See [python/README.md](python/README.md). |
 
 
 ### Keywords
