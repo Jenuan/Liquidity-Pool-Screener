@@ -2,6 +2,10 @@
 
 This directory is **`python/`** in the [Liquidity_pool_screener](https://github.com/Jenuan/Liquidity_pool_screener) repo. The bot expects **`.env` beside this README** (i.e. `python/.env`). Copy from `.env.example`; do not commit secrets.
 
+## Status
+
+This code is **experimental**: live PnL, IL, and fee figures may be **approximate or incomplete** depending on chain, pool type, and what is read from the sheet vs on-chain. It is meant for **developers** already using the LP Screener sheet. Do not treat the dashboard as audited financial or execution software.
+
 ## Variáveis de ambiente (`.env`)
 
 | Variável | Uso |

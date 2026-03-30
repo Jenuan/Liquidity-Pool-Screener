@@ -8,6 +8,17 @@ This repo also includes an optional **Python** stack: it reads the same Google S
 
 **Typical flow:** Apps Script fills the sheet → configure a Google **service account** + Sheet ID in `python/.env` (never commit that file or JSON keys) → run scripts from the `python/` directory. See **[SECURITY.md](SECURITY.md)** for what must stay local.
 
+## Project status
+
+| Component | Stage | Notes |
+|-----------|--------|--------|
+| **Apps Script screener** (`main_code_lp.gs`) | **Configurable community tool** | You own all thresholds, filters, and scoring in `CONFIG`. Output quality depends entirely on your settings. |
+| **Python companion** (`python/`) | **Experimental / early** | Sheet integration, risk/executor flow, and Streamlit dashboard; **live metrics are partial** (RPC + public APIs, DEX/pool coverage gaps). See **[python/README.md](python/README.md)** for limitations (fees on live table, V3 vs V2, Solana CLMM assumptions, etc.). |
+
+**Not financial advice** (DYOR). The Python side is **not** presented as production-ready execution software; use it for **monitoring and research**, validate every figure before any on-chain action, and expect breaking changes.
+
+This status should be updated in the same commit whenever capabilities materially change.
+
 ## Features
 
 - **Multi-chain**: Screen pools on Solana, Base, and other supported chains (configurable).
